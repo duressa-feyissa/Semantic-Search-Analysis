@@ -11,6 +11,10 @@ This is a Flask-based web application for performing semantic analysis and query
 - **Semantic Querying**: Find similar documents using TF-IDF vectors and cosine similarity.
 - **Named Entity Recognition**: Identify entities in text using spaCy.
 
+## Image
+<img src="https://github.com/duressa-feyissa/Semantic-Search-Analysis/blob/main/screen%20shoot.png" />
+
+
 ## Requirements
 
 To install the required Python packages, use the `requirements.txt` file:
@@ -41,9 +45,6 @@ Run the Flask application using the following command:
 
 ## Accessing the Web Interface
 Open your web browser and go to http://127.0.0.1:5000 to access the query interface.
-
-## Image
-<img src="https://github.com/duressa-feyissa/Semantic-Search-Analysis/blob/main/screen%20shoot.png" />
 
 ### Querying the System
 - Enter your query in the input field.
