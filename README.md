@@ -21,6 +21,9 @@ scikit-learn
 joblib
 ```
 
+## DataSet
+- [Download Dataset](https://drive.google.com/file/d/1lzZSXcENB1MpQsHrA2nRGXiU4m0m-dEu/view?usp=sharing)
+
 Install the dependencies with the following command:
 
 ```
