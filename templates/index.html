@@ -11,7 +11,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 100px;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
         .container {
             max-width: 800px;
@@ -29,16 +31,31 @@
             text-align: center;
             padding: 10px;
         }
-        .card-header h2 {
+        .card-header h2, .card-header h3 {
             font-weight: bold;
             margin: 0;
         }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+        .btn-primary, .btn-secondary {
+            margin-top: 10px;
         }
         #query {
-            height: 200px;
+            height: 150px;
+        }
+        #loading-spinner {
+            display: none;
+        }
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+        #results-list .list-group-item {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        #results-list .list-group-item:first-child {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -52,13 +69,21 @@
                 <form id="query-form">
                     <div class="form-group">
                         <label for="query">Enter your query:</label>
-                        <input type="text" class="form-control" id="query" required>
+                        <textarea class="form-control" id="query" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="text-center" id="loading-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div >
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary ml-2" id="clear-button">Clear</button>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="card" id="results-card" style="display: none;">
+        <div class="card mt-4" id="results-card" style="display: none;">
             <div class="card-header">
                 <h3>Results</h3>
             </div>
@@ -70,10 +95,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         $(document).ready(function() {
+            var currentRequest = null;
+            
             $('#query-form').on('submit', function(event) {
                 event.preventDefault();
                 var query = $('#query').val();
-                $.ajax({
+                $('#loading-spinner').show();
+                currentRequest = $.ajax({
                     url: '/query',
                     method: 'POST',
                     contentType: 'application/json',
@@ -81,16 +109,31 @@
                     success: function(response) {
                         var resultsList = $('#results-list');
                         resultsList.empty();
-                        // Example response
                         response.forEach(function(result) {
                             resultsList.append('<li class="list-group-item">' + result + '</li>');
                         });
                         $('#results-card').show();
+                        $('#loading-spinner').hide();
                     },
                     error: function(xhr) {
                         alert('An error occurred: ' + xhr.responseJSON.error);
+                        $('#loading-spinner').hide();
+                    },
+                    complete: function() {
+                        currentRequest = null;
                     }
                 });
+            });
+
+            $('#clear-button').on('click', function() {
+                if (currentRequest) {
+                    currentRequest.abort();
+                    currentRequest = null;
+                }
+                $('#query').val('');
+                $('#results-list').empty();
+                $('#results-card').hide();
+                $('#loading-spinner').hide();
             });
         });
     </script>
