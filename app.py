@@ -8,6 +8,7 @@ import re
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from spacy.cli import download
+import os
 
 app = Flask(__name__)
 
@@ -62,4 +63,5 @@ def query():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 8000))
+    app.run(host='0.0.0.0', port=port, debug=False)
