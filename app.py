@@ -7,6 +7,7 @@ import joblib
 import re
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
+from spacy.cli import download
 
 app = Flask(__name__)
 
@@ -15,6 +16,8 @@ nltk.download('names')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
+
+download("en_core_web_sm")
 
 nlp = spacy.load('en_core_web_sm')
 
