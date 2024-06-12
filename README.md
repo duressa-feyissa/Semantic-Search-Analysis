@@ -2,6 +2,9 @@
 
 This is a Flask-based web application for performing semantic analysis and querying a pre-processed dataset. The application uses NLP techniques to process text and retrieve similar documents based on cosine similarity.
 
+## Live Demo
+- [Link](https://semantic-search-analysis.onrender.com)
+
 ## Features
 
 - **Text Preprocessing**: Tokenization, stopword removal, stemming, and lemmatization.
@@ -29,11 +32,6 @@ Install the dependencies with the following command:
 ```
 pip install -r requirements.txt
 ```
-
-## Live Demo
-- [Link](https://semantic-search-analysis.onrender.com)
-
-
 
 ## Usage
 ### Running the Application
