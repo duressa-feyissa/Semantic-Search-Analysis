@@ -39,9 +39,11 @@ Run the Flask application using the following command:
 
 ```python app.py```
 
-
 ## Accessing the Web Interface
 Open your web browser and go to http://127.0.0.1:5000 to access the query interface.
+
+## Image
+<img src="https://github.com/duressa-feyissa/Semantic-Search-Analysis/blob/main/screen%20shoot.png" />
 
 ### Querying the System
 - Enter your query in the input field.
