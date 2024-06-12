@@ -42,17 +42,6 @@ Open your web browser and go to http://127.0.0.1:5000 to access the query interf
 - Click the "Submit" button.
 - View the results displayed below the form.
 
-## Project Structure
-.
-├── app.py                   # Main Flask application
-├── requirements.txt         # Python dependencies
-├── templates/
-│   └── index.html           # HTML template for the web interface
-├── vectorizer.joblib        # Pre-trained TF-IDF vectorizer (required)
-├── processed_data.pkl       # Pre-processed dataset (required)
-└── README.md                # Project documentation
-
-
-## Model
+## Model File
 - semantic_search_analysis.py
 - Semantic_Search_Analysis.ipynb
