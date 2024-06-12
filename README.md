@@ -30,6 +30,11 @@ Install the dependencies with the following command:
 pip install -r requirements.txt
 ```
 
+## Live Demo
+- [Link](https://semantic-search-analysis.onrender.com)
+
+
+
 ## Usage
 ### Running the Application
 Run the Flask application using the following command:
